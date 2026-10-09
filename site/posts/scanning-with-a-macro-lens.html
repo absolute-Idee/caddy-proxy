@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scanning negatives with a macro lens, two years in — Slow Shutter</title>
+  <meta name="description" content="What worked and what didn't after two years of camera-scanning film.">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href="/">Slow Shutter</a>
+      <nav>
+        <a href="/">Writing</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <article>
+      <h1>Scanning negatives with a macro lens, two years in</h1>
+      <p class="meta"><time datetime="2026-09-21">September 21, 2026</time> · 6 min read</p>
+
+      <p>Two years ago I sold my flatbed and switched to "camera scanning": a digital camera, a macro lens, a light source and something to hold the film flat. I wrote down what I'd change if I started again.</p>
+
+      <h2>The light matters more than the lens</h2>
+      <p>I spent a long time comparing lenses and almost no time thinking about the light. A cheap LED panel with a poor colour rendering index made colour negatives far harder to invert than any lens difference ever did. A proper high-CRI light fixed more problems than anything else I bought.</p>
+
+      <h2>Flatness, then focus</h2>
+      <p>If the film isn't flat, no amount of careful focusing saves the corners. A simple holder with anti-newton glass on one side was the second-best purchase. I focus at the centre using a magnified live view and stop down to f/5.6 or f/8.</p>
+
+      <h2 id="dust">Dust</h2>
+      <p>Dust always wins. A blower, an anti-static brush and a clean room help, but I've stopped chasing perfection. A few minutes with the healing brush is faster than twenty minutes of cleaning.</p>
+
+      <h2>The script</h2>
+      <p>The repetitive part is renaming and sorting files by roll. A tiny script does that for me:</p>
+<pre><code>for f in DSC*.ARW; do
+  n=$(printf "%02d" "$i")
+  mv "$f" "roll-${ROLL}-${n}.arw"
+  i=$((i+1))
+done</code></pre>
+      <p>Nothing clever, but it saves me from doing it by hand every weekend.</p>
+
+      <blockquote>Good enough and finished beats perfect and still on the copy stand.</blockquote>
+    </article>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">&copy; 2026 Mark Ellison. Words and photos are mine unless stated otherwise.</div>
+  </footer>
+</body>
+</html>

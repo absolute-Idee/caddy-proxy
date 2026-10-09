@@ -1,0 +1,34 @@
+{
+	order forward_proxy before file_server
+	admin off
+
+	servers {
+		protocols h1 h2
+	}
+}
+
+:443, {$DOMAIN} {
+	tls {$EMAIL}
+
+	header -Server
+
+	route {
+		forward_proxy {
+			basic_auth {$PROXY_USER} {$PROXY_PASS}
+			hide_ip
+			hide_via
+			probe_resistance {$PROBE_DOMAIN}
+		}
+		@connect method CONNECT
+		respond @connect 405
+	}
+
+	root * /srv/site
+	file_server
+
+	handle_errors 404 {
+		root * /srv/site
+		rewrite * /404.html
+		file_server
+	}
+}
